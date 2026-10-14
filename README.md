@@ -4,6 +4,7 @@ A high-performance URL shortener built with FastAPI, PostgreSQL, and Redis.
 
 ## Features
 
+- **Web UI** at `http://localhost:8000` -- paste a URL, get a short link
 - **Shorten URLs** with auto-generated base62 keys or custom aliases
 - **Fast redirects** via Redis cache with PostgreSQL fallback
 - **User accounts** with JWT authentication
@@ -48,7 +49,13 @@ alembic upgrade head
 uvicorn app.main:app --reload
 ```
 
-### 5. Try it out
+### 5. Open the UI
+
+Visit [http://localhost:8000](http://localhost:8000) in your browser to use the web interface.
+
+Paste a long URL, click **Shorten**, and get a short link you can copy and share.
+
+### 6. Or use the API directly
 
 ```bash
 # Shorten a URL
@@ -59,6 +66,8 @@ curl -X POST http://localhost:8000/api/v1/shorten \
 # Follow the short URL
 curl -L http://localhost:8000/<short_key>
 ```
+
+Swagger API docs are available at [http://localhost:8000/docs](http://localhost:8000/docs).
 
 ## API Endpoints
 
@@ -94,6 +103,8 @@ app/
   deps.py           # Auth dependencies
   routers/          # API route handlers
   services/         # Business logic
+  static/
+    index.html      # Web UI
 tests/              # pytest test suite
 ```
 
