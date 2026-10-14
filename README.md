@@ -116,4 +116,5 @@ docker-compose up -d        # Start PostgreSQL + Redis
 source venv/bin/activate
 alembic upgrade head        # Create tables
 uvicorn app.main:app --reload
+docker-compose down         # Stop services when done
 ```
